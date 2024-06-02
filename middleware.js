@@ -25,7 +25,7 @@ module.exports.isOwner = async (req,res,next) =>{
     let {id} = req.params;
     console.log(id);
     let listing = await Listing.findById(id).populate("owner");
-    console.log(listing);
+    
     if(!listing.owner._id.equals(res.locals.currUser._id) ){
         req.flash("error","You don't have permisson to edit");
         return res.redirect(`/listings/${id}`);
@@ -62,7 +62,7 @@ module.exports.isReviewAuthor = async (req,res,next) =>{
     let {id,reviewId} = req.params;
     console.log(reviewId);
     let review = await Review.findById(reviewId);
-    console.log(review);
+    
     if(!review.author._id.equals(res.locals.currUser._id) ){
         req.flash("error","You are not author of this review");
         return res.redirect(`/listings/${id}`);

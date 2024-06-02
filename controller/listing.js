@@ -43,7 +43,7 @@ module.exports.postNewListing = async (req,res,next)=>{
 
     listing.geometry = coordiate.body.features[0].geometry;
     let savedListing=await listing.save();
-    console.log(savedListing);
+    
     req.flash("success","New listing created !!");
     res.redirect("/listings");      
 };
@@ -65,7 +65,7 @@ module.exports.updateListing = async (req,res,next)=>{
 module.exports.deleteListing = async (req,res)=>{
     let {id} = req.params;
     let deleted = await Listing.findByIdAndDelete(id);
-    console.log(deleted);
+    
     req.flash("success","Listing deleted !!");
     res.redirect("/listings");
 };

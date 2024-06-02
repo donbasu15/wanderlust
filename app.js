@@ -72,7 +72,7 @@ app.use("/",userRouter);
 
 
 main().then(()=>{
-    console.log("connected succesfully");
+    console.log("connected succesfully to DB");
 })
 .catch((err)=>{
     console.log(err);
