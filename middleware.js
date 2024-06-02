@@ -23,7 +23,7 @@ module.exports.saveLocal = (req,res,next)=>{
 
 module.exports.isOwner = async (req,res,next) =>{
     let {id} = req.params;
-    console.log(id);
+    
     let listing = await Listing.findById(id).populate("owner");
     
     if(!listing.owner._id.equals(res.locals.currUser._id) ){
