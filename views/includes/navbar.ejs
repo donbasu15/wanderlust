@@ -19,6 +19,12 @@
   padding: 0.5rem 3rem 0.5rem 3rem;
   font-size: 1rem;
 }
+.collapsing{
+  background-color: #fff;
+}
+.collapse.show{
+  background-color: #fff;
+}
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
@@ -34,13 +40,11 @@
           
         </div>
         <div class="navbar-nav ms-auto">
-
-        
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 search-input" type="search" placeholder="Search destination" aria-label="Search">
-          <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-        </form>
-      </div>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2 search-input" type="search" placeholder="Search destination" aria-label="Search">
+              <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+            </form>
+        </div>
         <div class="navbar-nav ms-auto">
           <a class="nav-link" href="/listings/new">Airbnb your home</a>
           <% if(!currUser){ %>

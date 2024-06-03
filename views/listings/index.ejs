@@ -1,11 +1,16 @@
 <% layout("/layouts/boilerplate") %>
 <style>
-    #filters{
+    .filters{
+        z-index: 3;
+       
         display: flex;
         flex-wrap: wrap;
         align-items: center;
     }
     .filter{
+        display: flex;
+        flex-direction: column;
+      
         text-align: center;
         margin-right: 2rem;
         margin-top: 2rem;
@@ -25,64 +30,196 @@
     .tax-toggle{
         border: black 1px solid;
         border-radius: 1rem;
-        height: 3rem;
+        height: 2.5rem;
         padding: 1rem;
-        margin-left: 6rem;
+        /* margin-left: 6rem; */
         display: flex;
         align-items: center;
     }
+    .form-check-label{
+       font-size: smaller;
+    }
+    .nav-button{
+        height: 3rem;
+    }
+    .btn{
+       background-color: #fe424d;
+       color: #fff;
+    }
+    .modal-btn:hover{
+       background-color: #fe424d;
+       color: #fff;
+    }
+    
+    .all-cards{
+        position: relative;
+        top: 70px;
+      }
+    @media(min-width : 992px){
+      .modal-btn{
+          display: none;
+      }
+      
+    }
+    @media(max-width : 992px){
+      .top-buttons{
+      padding: 5px;
+      background-color: #fff;
+      position: fixed;
+      top: 80px;
+      left:0px;
+      z-index: 2;
+      width: 100vh;
+    }
+      .navbar-categories{
+          display: none;
+     }
+     .all-cards{
+        position: relative;
+        top: 55px;
+      }
+    }
+    .nav-div{
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      justify-content: center;
+
+    }
+
 </style>
 <body>
-    <div id="filters">
-        <div class="filter">
-            <i class="fa-solid fa-fire"></i>
-            <p>Trending</p>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-bed"></i>
-            <p>Rooms</p>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-mountain-city"></i>
-            <p>Iconic CIties</p>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-mountain"></i>
-            <p>Moutains</p>
-        </div>
-        <div class="filter">
-            <i class="fa-brands fa-fort-awesome"></i>
-            <p>Casles</p>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-person-swimming"></i>
-            <p>Amazing Pools</p>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-campground"></i>
-            <p>Camping</p>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-tractor"></i>
-            <p>Farm</p>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-snowflake"></i>
-            <p>Arctic</p>
-        </div>
-        <div class="tax-toggle">
-            <div class="form-check-reverse form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+  <!-- Button trigger modal -->
+  <div class="top-buttons">
+    <button type="button" class="btn modal-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Select Categories
+    </button>
+  </div>
+  
+
+<!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Categories</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="navbar-nav filters">
+              <a class="nav-link filter" aria-current="page" href="#">
+                <i class="fa-solid fa-fire"></i>
+                <p>Trending</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-bed"></i>
+                <p>Rooms</p>
+             </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-mountain-city"></i>
+                <p>Iconic CIties</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-mountain"></i>
+                <p>Moutains</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-brands fa-fort-awesome"></i>
+                <p>Casles</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-person-swimming"></i>
+                <p>Amazing Pools</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-campground"></i>
+                <p>Camping</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-tractor"></i>
+                <p>Farm</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-snowflake"></i>
+                <p>Arctic</p>
+              </a>
+              <!-- <div class="nav-link tax-toggle ">
+                <div class="form-check-reverse form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+                </div>
+             </div> -->
+             
             </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn modal-btn" data-bs-dismiss="modal">Close</button>
+            <form action="/listings">
+               <button type="submit" class="btn modal-btn">Select</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-light border-bottom navbar-categories" style="z-index: 2;">
+          <div class="collapse navbar-collapse nav-div" >
+            <div class="navbar-nav filters">
+              <a class="nav-link filter" aria-current="page" href="#" style="flex-grow: 1;">
+                <i class="fa-solid fa-fire"></i>
+                <p>Trending</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-bed"></i>
+                <p>Rooms</p>
+             </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-mountain-city"></i>
+                <p>Iconic CIties</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-mountain"></i>
+                <p>Moutains</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-brands fa-fort-awesome"></i>
+                <p>Casles</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-person-swimming"></i>
+                <p>Amazing Pools</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-campground"></i>
+                <p>Camping</p>
+              </a>
+              <a class="nav-link filter" href="#">
+                <i class="fa-solid fa-tractor"></i>
+                <p>Farm</p>
+              </a>
+              <a class="nav-link filter" href="#" style="flex-grow: 1;">
+                <i class="fa-solid fa-snowflake"></i>
+                <p>Arctic</p>
+              </a>
+              <!-- <div class="nav-link tax-toggle ">
+                <div class="form-check-reverse form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+                </div>
+             </div> -->
+             
+            </div>
+          </div>
         </div>
         
-    </div>
+      </nav>
+
+      
     <!-- <h1>All Listings</h1> -->
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <div class="row  row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 all-cards" >
+      
         <%   for(let listing of allListing){%>
             <a class="a-card" href="/listings/<%= listing._id %>">
-                <div class="card listing-card" style="width: 18rem;">
+                <div class="card listing-card" style="width: 22rem;">
                     <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_img" style="height: 20rem;">
                     <div class="card-img-overlay"></div>
                     <div class="card-body">
@@ -97,6 +234,7 @@
             </a>
             
         <%  }%>
+    
 
     </div>
 
@@ -119,4 +257,5 @@
             
         }
     })
+
 </script>

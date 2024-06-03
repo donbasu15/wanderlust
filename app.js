@@ -81,7 +81,8 @@ main().then(()=>{
 
 
 async function  main(){
-    await mongoose.connect(dbUrl);
+   // await mongoose.connect(dbUrl);
+    await mongoose.connect(mongo_url);
 }
 
 
