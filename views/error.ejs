@@ -1,5 +1,14 @@
 <% layout("/layouts/boilerplate")  %>
 
+<style>
+    .top-buttons{
+      display: none;
+   }
+   .navbar-categories{
+          display: none;
+     }
+</style>
+<%- include("../includes/flash.ejs") %>
 <div class="row mt-3">
     <div class="alert alert-danger col-6 offset-3" role="alert">
         <p class="alert-heading"><%= message %></p>

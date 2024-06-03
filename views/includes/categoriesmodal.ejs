@@ -1,0 +1,70 @@
+<div class="top-buttons">
+    <button type="button" class="btn modal-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Select Categories
+    </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-scrollable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="staticBackdropLabel">Categories</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <div class="navbar-nav filters">
+        <a class="nav-link filter" aria-current="page" href="#">
+          <i class="fa-solid fa-fire"></i>
+          <p>Trending</p>
+        </a>
+        <a class="nav-link filter" href="#">
+          <i class="fa-solid fa-bed"></i>
+          <p>Rooms</p>
+       </a>
+        <a class="nav-link filter" href="#">
+          <i class="fa-solid fa-mountain-city"></i>
+          <p>Iconic CIties</p>
+        </a>
+        <a class="nav-link filter" href="#">
+          <i class="fa-solid fa-mountain"></i>
+          <p>Moutains</p>
+        </a>
+        <a class="nav-link filter" href="#">
+          <i class="fa-brands fa-fort-awesome"></i>
+          <p>Casles</p>
+        </a>
+        <a class="nav-link filter" href="#">
+          <i class="fa-solid fa-person-swimming"></i>
+          <p>Amazing Pools</p>
+        </a>
+        <a class="nav-link filter" href="#">
+          <i class="fa-solid fa-campground"></i>
+          <p>Camping</p>
+        </a>
+        <a class="nav-link filter" href="#">
+          <i class="fa-solid fa-tractor"></i>
+          <p>Farm</p>
+        </a>
+        <a class="nav-link filter" href="#">
+          <i class="fa-solid fa-snowflake"></i>
+          <p>Arctic</p>
+        </a>
+        <!-- <div class="nav-link tax-toggle ">
+          <div class="form-check-reverse form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+          </div>
+       </div> -->
+       
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn modal-btn" data-bs-dismiss="modal">Close</button>
+      <form action="/listings">
+         <button type="submit" class="btn modal-btn">Select</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

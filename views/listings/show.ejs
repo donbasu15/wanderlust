@@ -1,16 +1,27 @@
 <% layout("/layouts/boilerplate") %>
+<style>
+   .top-buttons{
+      display: none;
+   }
+   .navbar-categories{
+          display: none;
+     }
+</style>
 <script>
    const mapToken = "<%= process.env.MAP_TOKEN %>";
    const listing = <%- JSON.stringify(listing) %>;
   
 </script>
+<body>
+   
+   <%- include("../includes/flash.ejs") %>
 <div class="row mt-3">
- <div class="col-8 offset-3">
+ <div class="col-8 offset-2">
     <h3><b><%= listing.title %></b></h3>
  </div>
 </div>
 <div class="row mt-2">
-   <div class="col-6 offset-3">
+   <div class="col-8 offset-2">
         
          <div class="card listing-card">
             <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing-img">
@@ -40,8 +51,9 @@
    
    
    
-   <div class="col-8 offset-3">
-      <% if(currUser) {%>
+  
+<% if(currUser) {%>
+   <div class="col-8 offset-2">
          <hr>
       <h4>Leave your review</h4><br>
       <form action="/listings/<%= listing._id %>/review" method="post" novalidate class="needs-validation">
@@ -70,30 +82,35 @@
          </div><br>
          <button class="btn btn-dark mt-3">Submit</button><br><br><br>
       </form>
-      <% } %>
+   </div>
+<% } %>
       <hr>
       
-      <%if(listing.reviews.length){%>
-      <div class="row">
+<%if(listing.reviews.length){%>
+   <div class="col-8 offset-2">
       <p><b>All Reviews</b></p>
-      <%for(let rev of listing.reviews){%>
-         <div class="card col-5 ms-5 mb-5">
-             <div class="card-body">
-                <h4 class="card-title">@<%= rev.author.username %></h4>
-                <p class="starability-result" data-rating="<%= rev.rating %>"></p>
-                <p class="card-text"><%= rev.comment %></p>
-                <% if(currUser && rev.author._id.equals(currUser._id)) {%>
-                <form class="mb-3" action="/listings/<%= listing._id %>/review/<%= rev._id %>?_method=DELETE" method="post">
-                  <button class="btn btn-sm btn-dark">Delete</button>
-               </form>
-               <% } %>
-             </div>
-         </div>
-     <%}%>
-     <hr>
-     <% } %>
-    
+      <div class="review-cards">
+           <%for(let rev of listing.reviews){%>
+              
+                  <div class="review-card">
+                     <b class="card-title">@<%= rev.author.username %></b>
+                     <p class="starability-result" data-rating="<%= rev.rating %>"></p>
+                     <p class="card-text"><%= rev.comment %></p>
+                     <% if(currUser && rev.author._id.equals(currUser._id)) {%>
+                     <form class="mb-3" action="/listings/<%= listing._id %>/review/<%= rev._id %>?_method=DELETE" method="post">
+                       <button class="btn btn-sm btn-dark">Delete</button>
+                    </form>
+                    <% } %>
+                  </div>
+             
+          <%}%>
+     </div>
+     
    </div>
+   <hr>
+<% } %>
+
+   
    
    
    
@@ -101,7 +118,7 @@
      
    </div>
    
-   <div class="col-8 offset-3">
+   <div class="col-8 offset-2">
       <h4>Where are we</h4>
       <div id="map"></div>
    </div>
@@ -109,6 +126,7 @@
    <br>
    
 </div>
+</body>
 <script src="/script/map.js">
    
 </script>
